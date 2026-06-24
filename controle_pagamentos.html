@@ -1350,8 +1350,8 @@ function renderTabelaClientes(lista) {
     const linhasDetalhe = aberto ? c.registros.map(r => `
       <tr class="expand-row">
         <td colspan="6">
-          <span class="mono">${escapeHtml(r.idProposta)}</span> · ${formatarMoeda(r.valorQuitacao)} · venc. ${formatarData(r.dataVencimento)} · ${r.dataPagamento ? `<span style="color:#5fb88a">pago em ${formatarData(r.dataPagamento)}</span>` : '<span style="color:#a16207">pendente</span>'} ·
-          <button class="link-btn" onclick="event.stopPropagation(); abrirEdicao('${r.id}')">editar</button>
+          <span class="mono">${escapeHtml(r.idProposta)}</span> · ${formatarMoeda(r.valorQuitacao)} · venc. ${formatarData(r.dataVencimento)} · ${r.dataPagamento ? `<span style="color:#5fb88a">pago em ${formatarData(r.dataPagamento)}</span>` : '<span style="color:#a16207">pendente</span>'}
+          ${(usuarioAtual && usuarioAtual.ehAdmin) ? ` · <button class="link-btn" onclick="event.stopPropagation(); abrirEdicao('${r.id}')">editar</button>` : ''}
         </td>
       </tr>
     `).join('') : '';
